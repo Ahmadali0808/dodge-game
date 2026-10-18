@@ -3,14 +3,13 @@ let gameOver = false;
 let player;
 let fallingObjects = [];
 let score = 0;
-let highScore = 0; // Track the highest score
-let speedMultiplier = 1; // Initial speed multiplier
-let spawnRate = 40; // Initial spawn rate
+let highScore = 0; 
+let speedMultiplier = 1; // speed multiplier
+let spawnRate = 40; // spawn rate multiplier
 
 function setup() {
   let canvas = createCanvas(windowWidth, windowHeight);
-  canvas.style('display', 'block');
-  noLoop();
+  canvas.style('display', 'block'); // geen scrollbalken
 
   player = new Player(width / 2, height - 60, 50);
 }
@@ -22,7 +21,7 @@ function draw() {
   }
 
   if (gameStarted) {
-    background(30);
+    background(10);
 
     // Display score
     fill(255);
@@ -55,8 +54,8 @@ function draw() {
     // Update score and difficulty
     score++;
     if (score % 10 === 0) {
-      speedMultiplier += 0.02; // Gradual increase in object speed
-      spawnRate = max(spawnRate - 2, 20); // Gradual decrease in spawn rate
+      speedMultiplier += 0.02; // increase object speed
+      spawnRate = max(spawnRate - 2, 20); 
     }
   }
 }
@@ -71,12 +70,12 @@ function spawnFallingObject() {
 function displayGameOver() {
   noLoop();
 
-  // Update the high score if the current score is greater
+  // Highscore
   if (score > highScore) {
     highScore = score;
   }
 
-  // Update the score and high score in the restart menu
+  // Update the score and  restart menu
   document.getElementById("final-score").innerText = `Your Score: ${score}`;
   document.getElementById("high-score").innerText = `High Score: ${highScore}`;
 
